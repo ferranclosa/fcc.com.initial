@@ -1,8 +1,5 @@
 package fcc.com.ngctglobal.domain;
 
-import org.hibernate.annotations.GeneratorType;
-import org.hibernate.annotations.ValueGenerationType;
-
 import javax.persistence.*;
 
 @Entity
@@ -22,6 +19,9 @@ public class CtaContract {
     private Long id;
     @Column(length = 20, nullable = false, name = "cta_num")
     private String ctaNumber;
+
+    @Version
+    private Integer version;
 
     public CtaContract() {
     }

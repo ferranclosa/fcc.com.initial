@@ -19,8 +19,20 @@ public class BenBeneficiary {
     private Long id;
     @Column(length = 30, nullable = false, name = "ben_num")
     private String benNumber;
-
+    @Version
+    private Integer version;
     public BenBeneficiary() {
     }
 
+    public String getBenNumber() {
+        return benNumber;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setBenNumber(String benNumber) {
+        this.benNumber = benNumber;
+    }
 }
