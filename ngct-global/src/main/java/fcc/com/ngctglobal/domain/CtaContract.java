@@ -3,13 +3,15 @@ package fcc.com.ngctglobal.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cta_contract", indexes = {@Index(name = "idx_byCtaNum", columnList = "cta_num" )}, schema = "ngct_contract")
+@Table(name = "cta_contract",
+    indexes = {@Index(name = "idx_byCtaNum", columnList = "cta_num" )},
+    schema = "contract")
 public class CtaContract {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "CTA_ID")
     @TableGenerator(name = "CTA_ID",
             table = "id_gen",
-            schema = "ngct_contract",
+            schema = "contract",
             pkColumnName = "keyName",
             pkColumnValue = "cta_id",
             valueColumnName = "keyValue",

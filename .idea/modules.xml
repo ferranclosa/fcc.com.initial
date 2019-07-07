@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/initial.iml" filepath="$PROJECT_DIR$/.idea/initial.iml" />
       <module fileurl="file://$PROJECT_DIR$/ngct-global/ngct-global.iml" filepath="$PROJECT_DIR$/ngct-global/ngct-global.iml" />
     </modules>
   </component>
