@@ -9,13 +9,15 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>fcc.com</groupId>
-    <artifactId>ngct-global</artifactId>
+    <artifactId>ngct</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ngct-global</name>
-    <description>ngct Global service</description>
+    <name>ngct-contract</name>
+    <description>ngct Contract service</description>
 
     <properties>
         <java.version>1.8</java.version>
+
+        <docker.image.prefix>ferranclosa</docker.image.prefix>
     </properties>
 
     <dependencies>
@@ -53,7 +55,9 @@
         <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
-
+            <version>
+                9.1-901.jdbc4
+            </version>
             <scope>runtime</scope>
         </dependency>
 
@@ -93,7 +97,32 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.10</version>
+                <configuration>
+                    <repository>ferranclosa/${project.name}</repository>
+                    <tag>${project.version}</tag>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                    <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
+        <finalName>ngct-contract</finalName>
     </build>
 
 </project>
